@@ -102,8 +102,9 @@
 
 <script>
     
-    var x = window.matchMedia("(max-width: 576px)")
-    myFunction(x)
+    var x = window.matchMedia("(max-width: 576px)");
+    myFunction(x);
+    x.addListener(myFunction);
     var skills=document.getElementById('skills')
     var slide=skills.getElementsByClassName('myslide');
     
