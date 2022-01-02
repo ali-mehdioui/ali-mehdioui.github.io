@@ -176,7 +176,9 @@ img{
     
     display: none;
   } 
-  
+  #mycomp{
+    position: relative;
+  }
 .prev,
 .next{
    cursor: pointer;
