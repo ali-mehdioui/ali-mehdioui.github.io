@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-    <title>Document</title>
+    <title>Portfolio</title>
 </head>
 <body>
     <div class="menu">
@@ -102,34 +102,55 @@
 
 <script>
     
+   
+
     var x = window.matchMedia("(max-width: 576px)");
     myFunction(x);
-    x.addListener(myFunction);
+   // x.addListener(myFunction);
     var skills=document.getElementById('skills')
     var slide=skills.getElementsByClassName('myslide');
+    var tab=['html.png','css.png','bootstrap.png','javascript.png','angular.png','nodejs.png','php.jpg','mysql.png','mongodb.png']
+   var compt=0;
     
     for (let index = 0; index < slide.length; index++) {
     slide[slide.length-1].style.visibility= 'hidden';
         
     }
-   
+     
     function next(){
+       if(screen.width < 576){
+        //console.log('next')
+        compt=compt+1;
+        if(compt = tab.length-1){
+            document.getElementById('next').style.display='none';
+        }
+        if(compt = 1){
+            document.getElementById('prev').style.display='block';
+        }
+     
+     document.getElementById('phoneimg').src=tab[compt];
+       }else{  
+        let skills=document.getElementById('skills')
+    let slide=skills.getElementsByClassName('myslide');
         skills.append(slide[0]);
        slide[slide.length-1].style.visibility= 'hidden';
-        slide[slide.length-2].style.visibility= 'visible';
+        slide[slide.length-2].style.visibility= 'visible';}
     }
     function prev(){
         skills.prepend(slide[slide.length-1])
        slide[0].style.visibility= 'visible';
        slide[slide.length-1].style.visibility= 'hidden';
     }
-   
-   var tab=['html.png','css.png','bootstrap.png','javascript.png','angular.png','nodejs.png','php.jpg','mysql.png','mongodb.png']
-   var compt=0;
+    
+
+   /*var tab=['html.png','css.png','bootstrap.png','javascript.png','angular.png','nodejs.png','php.jpg','mysql.png','mongodb.png']
+   var compt=0;*/
    function myFunction(x) {
   if (x.matches){
-    
+    console.log('x')
+    /*
     function next(){
+        console.log('next')
         compt=compt+1;
         if(compt = tab.length-1){
             document.getElementById('next').style.display='none';
@@ -140,9 +161,10 @@
      
      document.getElementById('phoneimg').src=tab[compt];
 
-    }
+    }*/ document.getElementById('next').onclick =next();
 
     function prev(){
+        console.log('prev');
         compt=compt-1;
         if(compt = 0){
             document.getElementById('prev').style.display='none';
