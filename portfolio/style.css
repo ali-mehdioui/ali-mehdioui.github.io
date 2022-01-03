@@ -194,6 +194,7 @@ img{
 }
 .prev{
   left: 0;
+  display: none;
 }
 .prev:hover,
 .next:hover {
@@ -249,3 +250,4 @@ right: 10%;
 }
 
 }
+

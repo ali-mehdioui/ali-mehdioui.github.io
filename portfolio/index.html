@@ -105,7 +105,7 @@
    
 
     var x = window.matchMedia("(max-width: 576px)");
-    myFunction(x);
+   // myFunction(x);
    // x.addListener(myFunction);
     var skills=document.getElementById('skills')
     var slide=skills.getElementsByClassName('myslide');
@@ -116,17 +116,23 @@
     slide[slide.length-1].style.visibility= 'hidden';
         
     }
+    function block(){
+        if(innerWidth > 576){
+            document.getElementById('prev').style.display='block'
+        }
+    }
      
     function next(){
-       if(screen.width < 576){
-        //console.log('next')
+       if(/*screen.width*/ innerWidth < 576){
+        
         compt=compt+1;
-        if(compt = tab.length-1){
+        console.log(compt)
+        if(compt >= tab.length-1){
             document.getElementById('next').style.display='none';
-        }
-        if(compt = 1){
+        } 
+        if(compt >= 1){
             document.getElementById('prev').style.display='block';
-        }
+        } 
      
      document.getElementById('phoneimg').src=tab[compt];
        }else{  
@@ -137,15 +143,32 @@
         slide[slide.length-2].style.visibility= 'visible';}
     }
     function prev(){
+        if(innerWidth < 576){
+           
+            compt=compt-1;
+            console.log(compt)
+        if(compt <= 0){
+            document.getElementById('prev').style.display='none';
+        }
+        if(compt <= tab.length-2){
+            document.getElementById('next').style.display='block';
+        } 
+        
+        document.getElementById('phoneimg').src=tab[compt];  
+
+        }else{
+          
         skills.prepend(slide[slide.length-1])
        slide[0].style.visibility= 'visible';
-       slide[slide.length-1].style.visibility= 'hidden';
+       slide[slide.length-1].style.visibility= 'hidden'; }
     }
+
+   
     
 
    /*var tab=['html.png','css.png','bootstrap.png','javascript.png','angular.png','nodejs.png','php.jpg','mysql.png','mongodb.png']
    var compt=0;*/
-   function myFunction(x) {
+ /*  function myFunction(x) {
   if (x.matches){
     console.log('x')
     /*
@@ -161,7 +184,7 @@
      
      document.getElementById('phoneimg').src=tab[compt];
 
-    }*/ 
+    }
       next();
 
     function prev(){
@@ -178,7 +201,7 @@
     }
   }
   
-}
+}*/
     
    
 </script>
